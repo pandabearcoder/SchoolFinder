@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_finder"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/nav_finder" />
+        <item
+            android:id="@+id/nav_k12"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/nav_k12" />
+        <item
+            android:id="@+id/nav_schools"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/nav_schools" />
+
+        <item
+            android:id="@+id/nav_tracks"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/nav_tracks" />
+    </group>
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="@string/nav_about" />
+</menu>
