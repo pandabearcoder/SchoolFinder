@@ -4,10 +4,141 @@
     android:layout_height="match_parent"
     tools:context="eng.soft.schoolfinder.fragments.Fragment_finder">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <eng.soft.schoolfinder.CustomImageView
+        android:id="@+id/maps"
+        android:background="@color/colorWhite"
+        android:src="@drawable/staticmap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/nav_finder" />
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:contentDescription="test" />
+
+    <LinearLayout
+        android:id="@+id/filterbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:orientation="vertical"
+        android:background="@color/colorBlack"
+        android:alpha="0.6"
+        android:clickable="true"
+        android:showDividers="middle"
+        android:dividerPadding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/chk_abs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_abs"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+            <CheckBox
+                android:id="@+id/chk_gas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_gas"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+            <CheckBox
+                android:id="@+id/chk_stem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_stem"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/chk_humms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_humms"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+
+            <CheckBox
+                android:id="@+id/chk_tvl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_tvl"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+            <CheckBox
+                android:id="@+id/chk_sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:text="@string/track_sports"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/chk_arts"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/track_artdesign"
+                android:textColor="@color/colorWhite"
+                android:buttonTint="@color/colorWhite" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:background="@color/colorBlack"
+                android:drawableLeft="@drawable/ic_autorenew_white_24dp"
+                android:textColor="@color/colorWhite"
+                android:text="REFRESH"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

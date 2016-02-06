@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     tools:context="eng.soft.schoolfinder.fragments.Fragment_k12">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/nav_k12" />
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Under Construction" />
 
 </FrameLayout>

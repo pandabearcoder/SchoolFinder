@@ -10,7 +10,6 @@ import eng.soft.schoolfinder.R;
 
 public class Fragment_finder extends Fragment {
 
-
     public Fragment_finder() {
         // Required empty public constructor
     }

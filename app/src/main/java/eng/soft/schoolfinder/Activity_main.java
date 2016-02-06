@@ -18,6 +18,7 @@ import eng.soft.schoolfinder.fragments.Fragment_finder;
 import eng.soft.schoolfinder.fragments.Fragment_k12;
 import eng.soft.schoolfinder.fragments.Fragment_schools;
 import eng.soft.schoolfinder.fragments.Fragment_tracks;
+import eng.soft.schoolfinder.obj.Pref;
 
 public class Activity_main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +31,8 @@ public class Activity_main extends AppCompatActivity
     Fragment_tracks tracks_display;
     Fragment_about about_display;
     FragmentManager mFragmentManager;
+
+    public static int selected;
 
     Toolbar toolbar;
 
@@ -52,7 +55,7 @@ public class Activity_main extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         FragmentTransaction initTransaction = mFragmentManager.beginTransaction();
-        initTransaction.replace(R.id.frag_container,home_display);
+        initTransaction.replace(R.id.frag_container, home_display);
         initTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -63,6 +66,59 @@ public class Activity_main extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
+
+        selected = Pref.readFromPreferences(this,Pref.KEY_SELECTED_OPTION,0);
+
+        switch (selected) {
+            case 0: //Home
+                mFragmentTransaction.replace(R.id.frag_container, home_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("Home");
+                getSupportActionBar().show();
+                break;
+            case 1: //Finder
+                mFragmentTransaction.replace(R.id.frag_container, finder_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("Finder");
+                getSupportActionBar().hide();
+                break;
+            case 2: //k-12
+                mFragmentTransaction.replace(R.id.frag_container, k12_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("The K to 12");
+                getSupportActionBar().show();
+                break;
+            case 3: //schools
+                mFragmentTransaction.replace(R.id.frag_container, schools_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("Schools");
+                getSupportActionBar().show();
+                break;
+            case 4: //tracks
+                mFragmentTransaction.replace(R.id.frag_container, tracks_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("K-12 Tracks");
+                getSupportActionBar().show();
+                break;
+            case 5: //about
+                mFragmentTransaction.replace(R.id.frag_container,about_display);
+                mFragmentTransaction.commit();
+                toolbar.setTitle("About");
+                getSupportActionBar().show();
+                break;
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Pref.saveToPreferences(this,Pref.KEY_SELECTED_OPTION,selected);
     }
 
     @Override
@@ -95,29 +151,41 @@ public class Activity_main extends AppCompatActivity
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
 
         if (id == R.id.nav_home) {
-            mFragmentTransaction.replace(R.id.frag_container,home_display);
+            selected = 0;
+            mFragmentTransaction.replace(R.id.frag_container, home_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("Home");
+            getSupportActionBar().show();
         } else if (id == R.id.nav_finder) {
-            mFragmentTransaction.replace(R.id.frag_container,finder_display);
+            selected = 1;
+            mFragmentTransaction.replace(R.id.frag_container, finder_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("Finder");
+            getSupportActionBar().hide();
         } else if (id == R.id.nav_k12) {
-            mFragmentTransaction.replace(R.id.frag_container,k12_display);
+            selected = 2;
+            mFragmentTransaction.replace(R.id.frag_container, k12_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("The K to 12");
+            getSupportActionBar().show();
         } else if (id == R.id.nav_schools) {
-            mFragmentTransaction.replace(R.id.frag_container,schools_display);
+            selected = 3;
+            mFragmentTransaction.replace(R.id.frag_container, schools_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("Schools");
+            getSupportActionBar().show();
         } else if (id == R.id.nav_tracks) {
-            mFragmentTransaction.replace(R.id.frag_container,tracks_display);
+            selected = 4;
+            mFragmentTransaction.replace(R.id.frag_container, tracks_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("K-12 Tracks");
+            getSupportActionBar().show();
         } else if (id == R.id.nav_about) {
-            mFragmentTransaction.replace(R.id.frag_container,about_display);
+            selected = 5;
+            mFragmentTransaction.replace(R.id.frag_container, about_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("About");
+            getSupportActionBar().show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
