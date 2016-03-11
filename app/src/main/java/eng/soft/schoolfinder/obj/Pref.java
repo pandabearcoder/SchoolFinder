@@ -7,6 +7,7 @@ public class Pref {
 
     public static final String PREF_FILENAME = "uxPreference";
     public static final String KEY_SELECTED_OPTION = "selected";
+    public static final String LOGGED = "false";
 
     public static void saveToPreferences(Context context, String prefName, Boolean prefValue) {
         SharedPreferences sharedPref = context.getSharedPreferences(Pref.PREF_FILENAME,Context.MODE_PRIVATE);

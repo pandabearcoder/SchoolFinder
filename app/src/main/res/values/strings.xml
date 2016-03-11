@@ -24,8 +24,71 @@
     <string name="placeholder_school_tracks">School Tracks</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_update">Update Schools</string>
+    <string name="action_login">@string/login_login</string>
+    <string name="action_signup">@string/login_signup</string>
+
+    <string name="login_uname">Username or Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_signup">Sign Up</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_activity__school__details">Activity_School_Details</string>
+    <string name="title_activity_activity_login">@string/login_login</string>
+    <string name="title_activity_test">test</string>
+
+    <string name="content_k12">
+        K to 12 is an education system under the Department of Education that aims to enhance learners’ basic skills, produce more competent citizens, and prepare graduates for lifelong learning and employment. “K” stands for Kindergarten and “12” refers to the succeeding 12 years of basic education (6 years of elementary education, 4 years of junior high school, and 2 years of senior high school).
+    </string>
+
+    <string name="content_k12_1">
+        At present, the Philippines is the last country in Asia and one of only three countries in the world with a 10-year pre-university program.
+    </string>
+
+    <string name="why_1">
+        The K-12 program offers a decongested 12-year program that gives students sufficient time to master skills and absorb basic competencies.
+        \n\nStudents of the new system will graduate at the age of 18 and will be ready for employment, entrepreneurship, middle level skills development, and higher education upon graduation.
+        \n\nThe K-12 program accelerates mutual recognition of Filipino graduates and professionals in other countries.
+        \n\nKindergarten is mandatory for five-year-old children, a pre-requisite for admission to Grade 1.
+        \n\nThe new curriculum gives students the chance to choose among three tracks (i.e. Academic; Technical-Vocational-Livelihood; and Sports and Arts) and undergo immersion, which provides relevant exposure and actual experience in their chosen track.
+    </string>
+
+    <string name="content_tracks">
+        Apart from the core curriculum, which has eight learning areas, the new senior high school system comes with specific career tracks that seem like college courses. They include certain disciplines.
+    </string>
+
+    <string name="content_track_list">
+        \tAcademic\n\tArts and Design\n\tSports\n\tTechnical and Vocational Livelihood
+    </string>
+
+    <string name="content_track1">
+        Each senior high school student must choose one track to master and base his/her choice on how he/she wants to advance after completing high school or Grade 12.
+    </string>
+
+    <string name="content_track_acad">
+        This track prepares students who plan to pursue college education and comprises four strands.
+        \na) ABM – Accountancy, Business, and Management
+        \nb) STEM – Science, Technology, Engineering, and Mathematics
+        \nc) HUMMS – Humanities and Social Science
+        \nd) General Academic
+    </string>
+
+    <string name="content_track_arts">
+        This track covers nine subjects, eight of which require 80 hours each per semester.
+    </string>
+
+    <string name="content_track_sports">
+        This track has nine subjects, which include Safety and First Aid, Human Movement, Coaching, Sports Officiating, and Sports Leadership.
+    </string>
+
+    <string name="content_track_tvl">
+        This track contains nine subjects (known as the TVL track subjects) and TESDA specialized subjects.
+        \na) Home Economics
+        \nb) Agri-Fishery
+        \nc) Industrial Arts
+        \nd) Information and Communications Technology or ICT
+    </string>
+
 </resources>

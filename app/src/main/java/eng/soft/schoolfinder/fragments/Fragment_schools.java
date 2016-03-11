@@ -12,14 +12,15 @@ import java.util.ArrayList;
 
 import eng.soft.schoolfinder.R;
 import eng.soft.schoolfinder.SchoolAdapter;
-import eng.soft.schoolfinder.obj.InitSchools;
+import eng.soft.schoolfinder.data.libs.SchoolModel;
 import eng.soft.schoolfinder.obj.SchoolObj;
 
 public class Fragment_schools extends Fragment {
 
-    ArrayList<SchoolObj> school_details;
-    InitSchools initSchools;
-    SchoolAdapter adapter;
+    public static SchoolAdapter schAdapter;
+    public static ArrayList<SchoolObj> schDetails;
+    SchoolModel schModel;
+
 
     public Fragment_schools() {
         // Required empty public constructor
@@ -29,14 +30,15 @@ public class Fragment_schools extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schools, container, false);
-        initSchools = new InitSchools();
-        school_details = initSchools.initItems();
-        adapter = new SchoolAdapter(getActivity(), school_details);
+
+        schModel = new SchoolModel(getActivity());
+        schDetails = schModel.getAllSchool();
+        schAdapter = new SchoolAdapter(getActivity(), schDetails);
         RecyclerView recyView = (RecyclerView) v.findViewById(R.id.schoolView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyView.setLayoutManager(layoutManager);
-        recyView.setAdapter(adapter);
+        recyView.setAdapter(schAdapter);
         return v;
     }
 
