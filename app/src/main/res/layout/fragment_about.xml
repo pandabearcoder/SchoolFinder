@@ -1,16 +1,90 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="eng.soft.schoolfinder.fragments.Fragment_about">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="Under Construction" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="More Info About K To 12"
+            android:textColor="@color/colorBlack"
+            android:textIsSelectable="true"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/k12ph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="http://k12philippines.com"
+            android:textColor="@color/colorPrimary"
+            android:textIsSelectable="true"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/k12gov"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="http://www.gov.ph/k-12/"
+            android:textColor="@color/colorPrimary"
+            android:textIsSelectable="true"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="The Team"
+            android:textColor="@color/colorBlack"
+            android:textIsSelectable="true"
+            android:textSize="22dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.8"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/members"
+            android:textColor="@color/colorBlack"
+            android:textIsSelectable="true"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:alpha="0.5"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Copyleft 2016"
+            android:textColor="@color/colorBlack"
+            android:textIsSelectable="true"
+            android:textSize="18dp"/>
+    </LinearLayout>
+
+</ScrollView>

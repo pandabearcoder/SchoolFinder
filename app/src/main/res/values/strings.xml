@@ -92,4 +92,12 @@
     </string>
     <string name="title_activity_activity_mapview">Map</string>
 
+    <string name="members">
+        John Paul Renes
+        \nJoyce Guaniezo
+        \nLalaine Almodal
+        \nJamie Catli
+        \nVon Louie Cruto
+    </string>
+
 </resources>
