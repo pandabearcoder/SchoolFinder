@@ -1,11 +1,10 @@
 package eng.soft.schoolfinder;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +22,6 @@ import eng.soft.schoolfinder.data.libs.DatabaseHelper;
 import eng.soft.schoolfinder.data.libs.SchoolModel;
 import eng.soft.schoolfinder.fragments.Fragment_Home;
 import eng.soft.schoolfinder.fragments.Fragment_about;
-import eng.soft.schoolfinder.fragments.Fragment_finder;
 import eng.soft.schoolfinder.fragments.Fragment_k12;
 import eng.soft.schoolfinder.fragments.Fragment_schools;
 import eng.soft.schoolfinder.fragments.Fragment_tracks;
@@ -35,17 +33,16 @@ public class Activity_main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static int selected;
-    String schoolURL = MyRequestInterface.HOST_ADDR + "schoolfinder/data/schools.php";
+    public static String menuMode;
+    public static Toolbar toolbar;
+    String schoolURL = MyRequestInterface.HOST_ADDR + "joycefinder/schoolfinder/data/schools.php";
     //Globally Declare Fragments
     Fragment_Home home_display;
     Fragment_k12 k12_display;
-    Fragment_finder finder_display;
     Fragment_schools schools_display;
     Fragment_tracks tracks_display;
     Fragment_about about_display;
     FragmentManager mFragmentManager;
-    String menuMode;
-    Toolbar toolbar;
     SchoolModel schModel;
 
     JSONObject data;
@@ -54,11 +51,10 @@ public class Activity_main extends AppCompatActivity
     public Activity_main() {
         home_display = new Fragment_Home();
         k12_display = new Fragment_k12();
-        finder_display = new Fragment_finder();
         schools_display = new Fragment_schools();
         tracks_display = new Fragment_tracks();
         about_display = new Fragment_about();
-        mFragmentManager = getFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
         menuMode = "normal";
         schModel = new SchoolModel(this);
     }
@@ -83,6 +79,7 @@ public class Activity_main extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -91,6 +88,7 @@ public class Activity_main extends AppCompatActivity
         FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
 
         selected = Pref.readFromPreferences(this,Pref.KEY_SELECTED_OPTION,0);
+        menuMode = Pref.readFromPreferences(this,Pref.MENU_MODE,"normal");
 
         switch (selected) {
             case 0: //Home
@@ -98,37 +96,26 @@ public class Activity_main extends AppCompatActivity
                 mFragmentTransaction.commit();
                 toolbar.setTitle("Home");
                 break;
-            case 1: //Finder
-                mFragmentTransaction.replace(R.id.frag_container, finder_display);
-                mFragmentTransaction.commit();
-                toolbar.setTitle("Finder");
-                break;
-            case 2: //k-12
+            case 1: //k-12
                 mFragmentTransaction.replace(R.id.frag_container, k12_display);
                 mFragmentTransaction.commit();
                 toolbar.setTitle("The K to 12");
                 break;
-            case 3: //schools
+            case 2: //schools
                 mFragmentTransaction.replace(R.id.frag_container, schools_display);
                 mFragmentTransaction.commit();
                 toolbar.setTitle("Schools");
                 break;
-            case 4: //tracks
+            case 3: //tracks
                 mFragmentTransaction.replace(R.id.frag_container, tracks_display);
                 mFragmentTransaction.commit();
                 toolbar.setTitle("K-12 Tracks");
                 break;
-            case 5: //about
+            case 4: //about
                 mFragmentTransaction.replace(R.id.frag_container, about_display);
                 mFragmentTransaction.commit();
                 toolbar.setTitle("About");
                 break;
-        }
-
-        if(selected == R.id.nav_schools) {
-            menuMode = "school";
-        } else {
-            menuMode = "normal";
         }
         invalidateOptionsMenu();
     }
@@ -136,7 +123,8 @@ public class Activity_main extends AppCompatActivity
     @Override
     protected void onStop() {
         super.onStop();
-        Pref.saveToPreferences(this,Pref.KEY_SELECTED_OPTION,selected);
+        Pref.saveToPreferences(this, Pref.KEY_SELECTED_OPTION, selected);
+        Pref.saveToPreferences(this,Pref.MENU_MODE,menuMode);
     }
 
     @Override
@@ -172,20 +160,19 @@ public class Activity_main extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
+            /*
             case(R.id.action_login):
                 Intent intent = new Intent(this, activity_login.class);
                 startActivity(intent);
                 break;
             case(R.id.action_signup):
                 break;
+            */
             case(R.id.action_sync):
                 syncSchool();
-                Fragment_schools.schDetails.clear();
-                Fragment_schools.schDetails.addAll(schModel.getAllSchool());
-                Fragment_schools.schAdapter.notifyDataSetChanged();
                 break;
         }
-        return id == R.id.action_login || super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -199,28 +186,23 @@ public class Activity_main extends AppCompatActivity
             mFragmentTransaction.replace(R.id.frag_container, home_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("Home");
-        } else if (id == R.id.nav_finder) {
-            selected = 1;
-            mFragmentTransaction.replace(R.id.frag_container, finder_display);
-            mFragmentTransaction.commit();
-            toolbar.setTitle("Finder");
         } else if (id == R.id.nav_k12) {
-            selected = 2;
+            selected = 1;
             mFragmentTransaction.replace(R.id.frag_container, k12_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("The K to 12");
         } else if (id == R.id.nav_schools) {
-            selected = 3;
+            selected = 2;
             mFragmentTransaction.replace(R.id.frag_container, schools_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("Schools");
         } else if (id == R.id.nav_tracks) {
-            selected = 4;
+            selected = 3;
             mFragmentTransaction.replace(R.id.frag_container, tracks_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("K-12 Tracks");
         }  else if (id == R.id.nav_about) {
-            selected = 5;
+            selected = 4;
             mFragmentTransaction.replace(R.id.frag_container, about_display);
             mFragmentTransaction.commit();
             toolbar.setTitle("About");
@@ -238,7 +220,7 @@ public class Activity_main extends AppCompatActivity
     }
 
     public void syncSchool() {
-
+        Fragment_schools.schDetails.clear();
         data = new JSONObject();
         try {
             try {
@@ -258,20 +240,20 @@ public class Activity_main extends AppCompatActivity
                         try {
                             ContentValues cv = new ContentValues();
                             for(int x = 0; x < response.getInt("total");x++) {
-                                cv.put(DatabaseHelper.SCHOOL_ID, response.getJSONArray("schools").getJSONObject(x).getInt("school_id"));
-                                cv.put(DatabaseHelper.SCHOOL_NAME, response.getJSONArray("schools").getJSONObject(x).getString("school_name"));
-                                cv.put(DatabaseHelper.SCHOOL_TRACKS, response.getJSONArray("schools").getJSONObject(x).getString("school_tracks"));
-                                cv.put(DatabaseHelper.SCHOOL_TYPE, response.getJSONArray("schools").getJSONObject(x).getString("school_type"));
-                                cv.put(DatabaseHelper.SCHOOL_COURSES, response.getJSONArray("schools").getJSONObject(x).getString("school_courses"));
-                                cv.put(DatabaseHelper.SCHOOL_ADDRESS, response.getJSONArray("schools").getJSONObject(x).getString("school_address"));
-                                cv.put(DatabaseHelper.SCHOOL_CONTACT, response.getJSONArray("schools").getJSONObject(x).getString("school_contact"));
-                                cv.put(DatabaseHelper.SCHOOL_WEBSITE, response.getJSONArray("schools").getJSONObject(x).getString("school_website"));
-                                cv.put(DatabaseHelper.SCHOOL_READY, response.getJSONArray("schools").getJSONObject(x).getString("school_k12ready"));
+                                cv.put(DatabaseHelper.SCHOOL_ID, response.getJSONArray("schools").getJSONObject(x).getInt("ID"));
+                                cv.put(DatabaseHelper.SCHOOL_NAME, response.getJSONArray("schools").getJSONObject(x).getString("Schoolname"));
+                                cv.put(DatabaseHelper.SCHOOL_ADDRESS, response.getJSONArray("schools").getJSONObject(x).getString("address"));
+                                cv.put(DatabaseHelper.SCHOOL_PRINCIPAL, response.getJSONArray("schools").getJSONObject(x).getString("principal"));
+                                cv.put(DatabaseHelper.SCHOOL_CONTACT, response.getJSONArray("schools").getJSONObject(x).getString("contactnum"));
+                                cv.put(DatabaseHelper.SCHOOL_READY, response.getJSONArray("schools").getJSONObject(x).getString("k12_ready"));
+                                cv.put(DatabaseHelper.SCHOOL_TRACKS, response.getJSONArray("schools").getJSONObject(x).getString("tracks_supported"));
                                 schModel.addSchool(cv);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        Fragment_schools.schDetails.addAll(schModel.getAllSchool());
+                        Fragment_schools.schAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getApplicationContext(), "There is something with the request. " + msg, Toast.LENGTH_SHORT).show();
                     }
@@ -282,5 +264,6 @@ public class Activity_main extends AppCompatActivity
         catch(Exception e) {
             System.out.print(e.toString());
         }
+
     }
 }

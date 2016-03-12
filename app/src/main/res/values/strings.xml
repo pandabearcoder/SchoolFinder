@@ -90,5 +90,6 @@
         \nc) Industrial Arts
         \nd) Information and Communications Technology or ICT
     </string>
+    <string name="title_activity_activity_mapview">Map</string>
 
 </resources>

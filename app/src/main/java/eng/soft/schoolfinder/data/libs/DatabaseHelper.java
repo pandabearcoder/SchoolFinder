@@ -17,12 +17,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     //school table
     public static final String SCHOOL_ID = "SCHOOL_ID";
     public static final String SCHOOL_NAME = "SCHOOL_NAME";
-    public static final String SCHOOL_TRACKS = "SCHOOL_TRACKS";
-    public static final String SCHOOL_TYPE = "SCHOOL_TYPE";
-    public static final String SCHOOL_COURSES = "SCHOOL_COURSES";
     public static final String SCHOOL_ADDRESS = "SCHOOL_ADDRESS";
+    public static final String SCHOOL_PRINCIPAL = "SCHOOL_PRINCIPAL";
     public static final String SCHOOL_CONTACT = "SCHOOL_CONTACT";
-    public static final String SCHOOL_WEBSITE = "SCHOOL_WEBSITE";
+    public static final String SCHOOL_TRACKS = "SCHOOL_TRACKS";
     public static final String SCHOOL_READY = "SCHOOL_READY";
     private static final int   DATABASE_VERSION = 1;
     private Context context;
@@ -50,14 +48,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             db.execSQL("CREATE TABLE " + SCHOOL_TABLE + " ( "
                 + SCHOOL_ID + " INTEGER PRIMARY KEY, "
                 + SCHOOL_NAME + " VARCHAR(60) NOT NULL, "
-                + SCHOOL_TRACKS + " VARCHAR(125) NOT NULL, "
-                + SCHOOL_TYPE + " VARCHAR(7) NOT NULL, "
-                + SCHOOL_COURSES + " VARCHAR(255) NOT NULL, "
                 + SCHOOL_ADDRESS + " VARCHAR(125) NOT NULL, "
-                + SCHOOL_CONTACT + " VARCHAR(11) NOT NULL, "
-                + SCHOOL_WEBSITE + " VARCHAR(30) NOT NULL, "
-                + SCHOOL_READY + " INTEGER NOT NULL) "
-
+                + SCHOOL_PRINCIPAL + " VARCHAR(50) NOT NULL, "
+                + SCHOOL_CONTACT + " INTEGER NOT NULL, "
+                + SCHOOL_READY + " VARCHAR(10) NOT NULL, "
+                + SCHOOL_TRACKS + " VARCHAR(125) NOT NULL)"
             );
         }
         catch (Exception e) {

@@ -25,13 +25,11 @@ public class SchoolModel extends  DatabaseHelper {
                 SchoolObj o = new SchoolObj();
                 o.schoolID = cursor.getInt(cursor.getColumnIndex(SCHOOL_ID));
                 o.schoolName = cursor.getString(cursor.getColumnIndex(SCHOOL_NAME));
-                o.schoolTracks = cursor.getString(cursor.getColumnIndex(SCHOOL_TRACKS));
-                o.schoolType = cursor.getString(cursor.getColumnIndex(SCHOOL_TYPE));
-                o.schoolCourses = cursor.getString(cursor.getColumnIndex(SCHOOL_COURSES));
                 o.schoolAddress = cursor.getString(cursor.getColumnIndex(SCHOOL_ADDRESS));
+                o.schoolPrincipal = cursor.getString(cursor.getColumnIndex(SCHOOL_PRINCIPAL));
                 o.schoolContact = cursor.getString(cursor.getColumnIndex(SCHOOL_CONTACT));
-                o.schoolWebsite = cursor.getString(cursor.getColumnIndex(SCHOOL_WEBSITE));
                 o.schoolReady = cursor.getString(cursor.getColumnIndex(SCHOOL_READY));
+                o.schoolTracks = cursor.getString(cursor.getColumnIndex(SCHOOL_TRACKS));
                 list.add(o);
             }while(cursor.moveToNext());
         }
