@@ -25,6 +25,9 @@ public class Activity_School_Details extends AppCompatActivity {
     int SchoolID;
     String SchoolName;
     String SchoolAddress;
+    String Principal;
+    String Contact;
+    String Ready;
     String SchoolTracks;
 
     Double lat;
@@ -34,6 +37,9 @@ public class Activity_School_Details extends AppCompatActivity {
 
     TextView txtSchoolName;
     TextView txtSchoolAddress;
+    TextView txtSchoolPrincipal;
+    TextView txtSchoolContact;
+    TextView txtSchoolReady;
     TextView txtSchoolTracks;
 
     @Override
@@ -50,15 +56,24 @@ public class Activity_School_Details extends AppCompatActivity {
         Intent intent = getIntent();
         SchoolID = intent.getIntExtra(SchoolAdapter.EXTRA_SCHOOL_ID, 1);
         SchoolName = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_NAME);
-        SchoolAddress = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_Address);
-        SchoolTracks = "Tracks offered: " + intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_TRACKS);
+        SchoolAddress = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_ADDRESS);
+        Principal = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_PRINCIPAL);
+        Contact = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_Contact);
+        Ready = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_READY);
+        SchoolTracks = intent.getStringExtra(SchoolAdapter.EXTRA_SCHOOL_TRACKS);
 
         txtSchoolName = (TextView) findViewById(R.id.txtSchoolName);
         txtSchoolAddress = (TextView) findViewById(R.id.txtSchoolAddress);
+        txtSchoolPrincipal = (TextView) findViewById(R.id.txtSchoolPrincipal);
+        txtSchoolContact = (TextView) findViewById(R.id.txtSchoolContact);
+        txtSchoolReady = (TextView) findViewById(R.id.txtSchoolSenior);
         txtSchoolTracks = (TextView) findViewById(R.id.txtSchoolTracks);
 
         txtSchoolName.setText(SchoolName);
         txtSchoolAddress.setText(SchoolAddress);
+        txtSchoolPrincipal.setText(Principal);
+        txtSchoolContact.setText(Contact);
+        txtSchoolReady.setText(Ready);
         txtSchoolTracks.setText(SchoolTracks);
 
         requestQueue = Volley.newRequestQueue(this);

@@ -13,14 +13,35 @@ import eng.soft.schoolfinder.obj.SchoolObj;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolViewHolder> {
 
-    private ArrayList<SchoolObj> schoolData;
-
-    public static final String EXTRA_SCHOOL_ID = "id";
-    public static final String EXTRA_SCHOOL_NAME = "schoolname";
-    public static final String EXTRA_SCHOOL_Address = "schooladdress";
+    public static final String EXTRA_SCHOOL_ID = "ID";
+    public static final String EXTRA_SCHOOL_NAME = "SCHOOLNAME";
+    public static final String EXTRA_SCHOOL_ADDRESS = "ADDRESS";
+    public static final String EXTRA_SCHOOL_PRINCIPAL = "PRINCIPAL";
+    public static final String EXTRA_SCHOOL_Contact = "CONTACT";
+    public static final String EXTRA_SCHOOL_READY = "READY";
     public static final String EXTRA_SCHOOL_TRACKS = "tracks";
-
     Context mContext;
+    private ArrayList<SchoolObj> schoolData;
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            SchoolViewHolder holder = (SchoolViewHolder) view.getTag();
+            int position = holder.getLayoutPosition();
+
+            SchoolObj schoolObj = schoolData.get(position);
+
+            Intent intent = new Intent(mContext,Activity_School_Details.class);
+            intent.putExtra(EXTRA_SCHOOL_ID,schoolObj.schoolID);
+            intent.putExtra(EXTRA_SCHOOL_NAME,schoolObj.schoolName);
+            intent.putExtra(EXTRA_SCHOOL_ADDRESS,schoolObj.schoolAddress);
+            intent.putExtra(EXTRA_SCHOOL_PRINCIPAL,schoolObj.schoolPrincipal);
+            intent.putExtra(EXTRA_SCHOOL_Contact,schoolObj.schoolContact);
+            intent.putExtra(EXTRA_SCHOOL_READY,schoolObj.schoolReady);
+            intent.putExtra(EXTRA_SCHOOL_TRACKS,schoolObj.schoolTracks);
+            mContext.startActivity(intent);
+
+        }
+    };
 
     public SchoolAdapter(Context context, ArrayList<SchoolObj> schoolDataList) {
         this.schoolData = schoolDataList;
@@ -52,22 +73,4 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolViewHolder> {
     public int getItemCount() {
         return (null != schoolData ? schoolData.size() : 0);
     }
-
-    View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            SchoolViewHolder holder = (SchoolViewHolder) view.getTag();
-            int position = holder.getLayoutPosition();
-
-            SchoolObj schoolObj = schoolData.get(position);
-
-            Intent intent = new Intent(mContext,Activity_School_Details.class);
-            intent.putExtra(EXTRA_SCHOOL_ID,schoolObj.schoolID);
-            intent.putExtra(EXTRA_SCHOOL_NAME,schoolObj.schoolName);
-            intent.putExtra(EXTRA_SCHOOL_Address,schoolObj.schoolAddress);
-            intent.putExtra(EXTRA_SCHOOL_TRACKS,schoolObj.schoolTracks);
-            mContext.startActivity(intent);
-
-        }
-    };
 }
