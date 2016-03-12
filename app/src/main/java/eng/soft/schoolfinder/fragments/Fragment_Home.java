@@ -47,7 +47,10 @@ public class Fragment_Home extends Fragment {
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.frag_container, k12_display);
                 mFragmentTransaction.commit();
+                Activity_main.selected = 1;
+                Activity_main.menuMode = "normal";
                 Activity_main.toolbar.setTitle("The K to 12");
+                getActivity().invalidateOptionsMenu();
             }
         });
 
@@ -57,8 +60,9 @@ public class Fragment_Home extends Fragment {
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.frag_container, schools_display);
                 mFragmentTransaction.commit();
-                Activity_main.toolbar.setTitle("Schools");
+                Activity_main.selected = 2;
                 Activity_main.menuMode = "school";
+                Activity_main.toolbar.setTitle("Schools");
                 getActivity().invalidateOptionsMenu();
             }
         });
@@ -69,7 +73,10 @@ public class Fragment_Home extends Fragment {
                 mFragmentTransaction = mFragmentManager.beginTransaction();
                 mFragmentTransaction.replace(R.id.frag_container, tracks_display);
                 mFragmentTransaction.commit();
-                Activity_main.toolbar.setTitle("K-12 Tracks");
+                Activity_main.selected = 3;
+                Activity_main.menuMode = "normal";
+                Activity_main.toolbar.setTitle("Schools");
+                getActivity().invalidateOptionsMenu();
             }
         });
         return v;
