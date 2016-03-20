@@ -170,6 +170,7 @@ public class Activity_main extends AppCompatActivity
             */
             case(R.id.action_sync):
                 syncSchool();
+                schModel.dropSchools();
                 break;
         }
         return super.onOptionsItemSelected(item);

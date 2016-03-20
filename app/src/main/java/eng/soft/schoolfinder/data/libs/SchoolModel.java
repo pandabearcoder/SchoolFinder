@@ -42,4 +42,13 @@ public class SchoolModel extends  DatabaseHelper {
         long result = db.insert(SCHOOL_TABLE, null, cv);
         return result >= 0;
     }
+
+    public boolean dropSchools() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(SCHOOL_TABLE, null, null);
+        if(result >= 0) {
+            db.execSQL("VACUUM");
+        }
+        return result >= 0;
+    }
 }

@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public interface MyRequestInterface {
 
-    String HOST_ADDR = "http://192.168.1.5/";
+    String HOST_ADDR = "http://192.168.15.6/";
 
     void onComplete(int status, String msg, JSONObject response);
     
